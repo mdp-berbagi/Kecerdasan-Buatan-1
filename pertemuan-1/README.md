@@ -1,8 +1,10 @@
 # SWI-Prolog
 
-**:-** Maka 
-. = sama kyk ; di bahas program lain
+<b>:-</b> = Maka <br />
+<b>.</b> = sama kyk ; di bahas program lain <br />
 
-manggil data lebih dari 1
-; = melanjutkan
-. = stop
+<br /><br />
+
+manggil data lebih dari 1 <br />
+<b>;</b> = melanjutkan <br />
+<b>.</b> = stop <br />

@@ -1,33 +1,42 @@
-anak(budi, adi).
-anak(budi, ana).
-anak(badu, dedi).
-anak(badu, deni).
-anak(toto, budi).
-anak(toto, badu).
-anak(ana, siti).
-anak(deni, riri).
+anak(adi, budi).
+anak(ana, budi).
+anak(dedi, badu).
+anak(deni, badu).
+anak(budi, toto).
+anak(badu, toto).
+anak(siti, ana).
+anak(riri, deni).
+
 
 % fungi tidak boleh menggunakan fungsi lain (By Gasim)
 % He said "nanti kalo kita gk butuh fungsi itu gimana?"
-ayah(Ayah, OrangIni) :- anak(Ayah, OrangIni).
+%
+% =======================================================================
+%
+% Praktek Terbaik Selalu Memuncuklan nilai yang tepat
+%
+% Misalkan Memanggil "cucu(Siapa, toto)."
+% maka setiap pencarian data dengan ";"
+% sampai habis tidak ada "false", kalau ada, berarti kurang baik
 
-kakek(Kakek, OrangIni) :-
-    anak(Ayah, OrangIni),
-    anak(Kakek, Ayah).
+ayah(Ayah, Anak) :- anak(Anak, Ayah).
+
+kakek(Kakek, Cucu) :-
+    anak(Cucu, Ayah),
+    anak(Ayah, Kakek).
 
 cucu(Cucu, Kakek) :-
-    anak(Kakek, Ayah),
-    anak(Ayah, Cucu).
+    anak(Ayah, Kakek),
+    anak(Cucu, Ayah).
 
 saudara(Saudara, OrangIni) :-
-    anak(Ayah, OrangIni),
-    anak(Ayah, Saudara),
-    not(OrangIni = Saudara).
+    anak(OrangIni, Ayah),
+    anak(Saudara, Ayah),
+    not(Saudara = OrangIni).
 
-sepupu(NamaSepupu, OrangIni) :-
-    anak(Ayah, OrangIni),
-    anak(Kakek, Ayah),
-    anak(Kakek, OrtuSepupu),
-    not(OrtuSepupu = Ayah),
-    anak(OrtuSepupu, NamaSepupu).
-
+sepupu(Sepupunya, OrangIni) :-
+    anak(OrangIni, Ayahnya),
+    anak(Ayahnya, Kakeknya),
+    anak(Kakeknya, OrtuSepupu),
+    not(OrtuSepupu = Ayahnya),
+    anak(Sepupunya, OrtuSepupu).
